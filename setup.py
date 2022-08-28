@@ -5,6 +5,7 @@ import os
 import subprocess
 
 class CMakeExtension(Extension):
+    """Solution from https://martinopilia.com/posts/2018/09/15/building-python-extension.html"""
     def __init__(self, name, cmake_lists_dir='.', **kwa):
         Extension.__init__(self, name, sources=[], **kwa)
         self.cmake_lists_dir = os.path.abspath(cmake_lists_dir)
@@ -43,5 +44,6 @@ setup(
     version="0.0.1",
     author="Nikhil Admal",
     ext_modules=[mdstresslab_bindings],
-    cmdclass = {'build_ext': cmake_build_ext}
+    cmdclass = {'build_ext': cmake_build_ext},
+    package_data = {"pymdstresslab":['./build/mdstresslab/*.so' ,'pymdstresslab/shared_objects/mdstresslab/*.so']}
 )
