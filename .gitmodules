@@ -1,0 +1,3 @@
+[submodule "mdstresslab"]
+	path = mdstresslab
+	url = https://github.com/nikhil-admal/mdstresslab.git
