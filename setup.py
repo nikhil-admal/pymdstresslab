@@ -34,7 +34,7 @@ class cmake_build_ext(build_ext_orig):
 
 
 mdstresslab_bindings = CMakeExtension(
-    "pymdstresslab.pymdstresslab",
+    "pymdstresslab.shared_objects.pymdstresslab",
     cmake_lists_dir="./")
 
 
