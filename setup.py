@@ -4,6 +4,7 @@ import pathlib
 import os
 import subprocess
 import shutil
+from glob import glob
 
 # class CMakeExtension(Extension):
 #     """Solution from https://martinopilia.com/posts/2018/09/15/building-python-extension.html"""
@@ -60,8 +61,11 @@ class cmake_build_ext(build_ext_orig):
         for ext in self.extensions:
             # if "my_pyth_lib" in ext.name:
             print(os.listdir(self.build_temp))
+            in_file_name_mdstress = glob(self.build_temp + "/mdstresslab/libMDStressLab++.*")[0]
+            out_file_name_mdstress = "/".join(self.get_ext_fullpath(ext.name).split("/")[:-1]) + "/mdstresslab/" + in_file_name_mdstress.split("/")[-1]
+            print(in_file_name_mdstress, out_file_name_mdstress)
             shutil.copy(self.build_temp + "/" + self.get_ext_filename(ext.name).split("/")[-1], self.get_ext_fullpath(ext.name))
-            shutil.copy(self.build_temp + "/mdstresslab/libMDStressLab++.so", "/".join(self.get_ext_fullpath(ext.name).split("/")[:-1]) + "/mdstresslab/libMDStressLab++.so")
+            shutil.copy(in_file_name_mdstress,out_file_name_mdstress)
             # else:
             #     shutil.copy(self.build_temp + "/" + self.get_ext_filename(ext.name).split("/")[-1], self.get_ext_fullpath(ext.name))
 
