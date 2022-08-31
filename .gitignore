@@ -4,4 +4,4 @@ cmake-build-release
 venv
 *.so
 *.egg-info
-
+__pycache__/

@@ -6,6 +6,8 @@ import subprocess
 import shutil
 from glob import glob
 
+
+
 # class CMakeExtension(Extension):
 #     """Solution from https://martinopilia.com/posts/2018/09/15/building-python-extension.html"""
 #     def __init__(self, name, cmake_lists_dir='.', **kwa):
@@ -53,6 +55,16 @@ class cmake_build_ext(build_ext_orig):
         self.build_args = build_args
         # CMakeLists.txt is in the same directory as this setup.py file
         cmake_list_dir = os.path.abspath(os.path.dirname(__file__))
+
+        # Check python env flags for CMAKE
+        # PYTHON_LIB  PYTHON_EXEC
+        python_lib = os.environ.get("PYTHON_LIB", None)
+        python_exec = os.environ.get("PYTHON_EXEC", None)
+        if python_lib:
+            cmake_args += ['-DPYTHON_LIBRARY=' + python_lib]
+        if python_exec:
+            cmake_args += ['-DPYTHON_EXECUTABLE=' + python_exec]
+
         subprocess.check_call(['cmake', cmake_list_dir] + cmake_args, cwd=self.build_temp)#, env=env)
         cmake_cmd = ['cmake', '--build', '.'] + self.build_args
         subprocess.check_call(cmake_cmd, cwd=self.build_temp)
