@@ -1,1 +1,1 @@
-import pymdstresslab
+from pymdstresslab.shared_objects import pymdstresslab
