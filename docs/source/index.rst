@@ -10,6 +10,8 @@ Welcome to PyMDStressLab's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   pymdstresslab
+   modules
 
 
 Indices and tables

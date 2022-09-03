@@ -1,0 +1,13 @@
+To build docs from source code first run
+```
+sphinx-apidoc -o ./source ../src/pymdstresslab 
+```
+
+from the doc folder. This shall generate files for all the docsctrings and classes etc.
+
+Following this, include the rst files generated in index.rst (by adding their name to the index file without the suffixt `.rst`)
+
+Finally run `make html`.
+
+You can now open the Documentation as `firefox build/html` (use your own browser of choice).
+ 
