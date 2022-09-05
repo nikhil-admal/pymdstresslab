@@ -5,11 +5,12 @@ class Box:
     """
     This is an example Python class wrapping the compiled artifacts as a hidden class.
 
-    :param number_of_particles: Initialize using number of particles. If not provided, it defaults to -1. During read function call, it then 
-    reads from file.
-    :param reference_and_final: Assigns 1 for True, 0 for False, 
+    :param number_of_particles: Initialize using number of particles. If not provided, it defaults to -1. During read function call, it then reads from file.
+    :param reference_and_final: Assigns 1 for True, 0 for False,  
     :param config_file: filename for configuration file
+
     """
+   
     def __init__(self, number_of_particles:int=-1, reference_and_final:bool = True, config_file:str = None) -> None:
         self.number_of_particles = number_of_particles
         self.reference_and_final = 1 if reference_and_final else 0

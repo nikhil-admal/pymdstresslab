@@ -1,2 +1,5 @@
+import imp
 from pymdstresslab.shared_objects import pymdstresslab
 from pymdstresslab.Box import Box
+from pymdstresslab.shared_objects.pymdstresslab import Kim
+from pymdstresslab.Grid import Grid

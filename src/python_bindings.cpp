@@ -8,7 +8,6 @@
 #include "BoxConfiguration.h"
 #include "kim.h"
 #include "Grid.h"
-#include "Sphere.h"
 #include "Stress.h"
 #include "calculateStress.h"
 #include "SubConfiguration.h"
@@ -35,13 +34,15 @@ PYBIND11_MODULE(pymdstresslab, m){
 
     py::class_<Grid<Current>,GridBase>(m, "GridCurrent")
             .def(py::init<int>())
-            .def(py::init<Vector3d, Vector3d, int>())
+            .def(py::init<Vector3d, Vector3d, int, int, int>())
+            .def(py::init<std::string>())
             .def("read",&Grid<Current>::read)
             .def("read",&Grid<Current>::write);
 
     py::class_<Grid<Reference>,GridBase>(m, "GridReference")
             .def(py::init<int>())
-            .def(py::init<Vector3d, Vector3d, int>())
+            .def(py::init<Vector3d, Vector3d, int, int, int>())
+            .def(py::init<std::string>())
             .def("read",&Grid<Reference>::read)
             .def("read",&Grid<Reference>::write);
 

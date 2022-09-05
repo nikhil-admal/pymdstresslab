@@ -3,6 +3,9 @@ pymdstresslab package
 
 Submodules
 ----------
+pymdstresslab.Grid module
+-------------------------
+.. autofunction:: pymdstresslab.Grid.Grid
 
 pymdstresslab.Box module
 ------------------------
