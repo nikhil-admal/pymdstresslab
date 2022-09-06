@@ -2,12 +2,14 @@
 #include "pybind11/pybind11.h"
 #include "pybind11/eigen.h"
 #include "typedef.h"
+#include <map>
 
 #include <string>
 
 #include "BoxConfiguration.h"
 #include "kim.h"
 #include "Grid.h"
+#include "MethodSphere.h"
 #include "Stress.h"
 #include "calculateStress.h"
 #include "SubConfiguration.h"
@@ -45,15 +47,18 @@ PYBIND11_MODULE(pymdstresslab, m){
             .def(py::init<std::string>())
             .def("read",&Grid<Reference>::read)
             .def("read",&Grid<Reference>::write);
-
-//    py::class_<Sphere>(m, "Sphere")
-//            .def(py::init<double>())
-//            .def(py::init<Sphere&>());
-
-//    py::class_<Stress<Sphere,Cauchy> >(m, "StressCauchy")
-//            .def(py::init<std::string,Sphere &, Grid<Current>* >());
-//    py::class_<Stress<Sphere,Piola> >(m, "StressPiola")
-//            .def(py::init<std::string,Sphere &, Grid<Reference>* >());
+            
+    py::class_<MethodSphere>(m, "MethodSphere")
+            .def(py::init<double, std::string>())
+            .def(py::init<double, std::map<double,double> >())
+            .def(py::init<const MethodSphere&>());
+        
+   py::class_<Stress<MethodSphere,Cauchy> >(m, "StressCauchy")
+           .def(py::init<std::string,const MethodSphere &, Grid<Current>* >())
+           .def(py::init<const MethodSphere &, Grid<Current>* >());
+   py::class_<Stress<MethodSphere,Piola> >(m, "StressPiola")
+           .def(py::init<std::string, const MethodSphere &, Grid<Reference>* >())
+           .def(py::init<const MethodSphere &, Grid<Reference>* >());
 
 //    py::class_<Stencil>(m, "Stencil")
 //            .def(py::init<Configuration&>());

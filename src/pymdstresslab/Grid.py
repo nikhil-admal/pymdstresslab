@@ -25,7 +25,7 @@ def Grid(grid_type:str,
     if grid_type.lower() == "current":
         if from_file:
             return _pmsl_so.GridCurrent(from_file)
-        elif lower_limit and upper_limit and x:
+        elif (lower_limit != None).all() and (upper_limit != None).all() and x:
             return _pmsl_so.GridCurrent(lower_limit, upper_limit, x, y, z)
         elif ngrid:
             return _pmsl_so.GridCurrent(ngrid)
@@ -35,7 +35,7 @@ def Grid(grid_type:str,
     elif grid_type.lower() == "reference":
         if from_file:
             return _pmsl_so.GridReference(from_file)
-        elif lower_limit and upper_limit and x:
+        elif (lower_limit != None).all() and (upper_limit != None).all() and x:
             return _pmsl_so.GridReference(lower_limit, upper_limit, x, y, z)
         elif ngrid:
             return _pmsl_so.GridReference(ngrid)
