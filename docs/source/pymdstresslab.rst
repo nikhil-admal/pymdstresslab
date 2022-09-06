@@ -7,6 +7,12 @@ pymdstresslab.Grid module
 -------------------------
 .. autofunction:: pymdstresslab.Grid.Grid
 
+
+pymdstresslab.Stress module
+-------------------------
+.. autofunction:: pymdstresslab.Stress.Stress
+
+
 pymdstresslab.Box module
 ------------------------
 

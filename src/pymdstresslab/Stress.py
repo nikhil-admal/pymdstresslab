@@ -16,10 +16,11 @@ def Stress(method, grid, name:str=None):
     if grid_type == "GridCurrent":
         stress = _pmsl_so.StressCauchy(name, method, grid) if name else \
                  _pmsl_so.StressCauchy(method, grid)
-    elif grid_type =="GrigReference":
+    elif grid_type =="GridReference":
         stress = _pmsl_so.StressPiola(name, method, grid) if name else \
                  _pmsl_so.StressPiola(method, grid)
     else:
-        raise ValueError("Grid type not supported yet.")
+
+        raise ValueError(f"Grid type {grid_type} not supported yet.")
     return stress
     

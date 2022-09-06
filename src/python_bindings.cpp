@@ -1,6 +1,7 @@
 #include "pybind11/numpy.h"
 #include "pybind11/pybind11.h"
 #include "pybind11/eigen.h"
+#include "pybind11/eigen.h"
 #include "typedef.h"
 #include <map>
 
@@ -55,43 +56,49 @@ PYBIND11_MODULE(pymdstresslab, m){
         
    py::class_<Stress<MethodSphere,Cauchy> >(m, "StressCauchy")
            .def(py::init<std::string,const MethodSphere &, Grid<Current>* >())
-           .def(py::init<const MethodSphere &, Grid<Current>* >());
+           .def(py::init<const MethodSphere &, Grid<Current>* >())
+           .def("write", py::overload_cast<const std::string &>(&Stress<MethodSphere,Cauchy>::write))
+           .def("write", py::overload_cast<>(&Stress<MethodSphere,Cauchy>::write));
+
    py::class_<Stress<MethodSphere,Piola> >(m, "StressPiola")
            .def(py::init<std::string, const MethodSphere &, Grid<Reference>* >())
-           .def(py::init<const MethodSphere &, Grid<Reference>* >());
-
-//    py::class_<Stencil>(m, "Stencil")
-//            .def(py::init<Configuration&>());
-//    py::class_<SubConfiguration,Configuration>(m, "SubConfiguration")
-//            .def(py::init<Stencil &>());
-//    py::class_<InteratomicForces>(m, "InteratomicForces")
-//            .def(py::init<NeighList*>());
+           .def(py::init<const MethodSphere &, Grid<Reference>* >())
+           .def("write", py::overload_cast<const std::string &>(&Stress<MethodSphere,Piola>::write))
+           .def("write", py::overload_cast<>(&Stress<MethodSphere,Piola>::write));
 
     // calculates one Cauchy stress
-//    m.def("calculateStress",[](BoxConfiguration& body, Kim& kim, std::tuple<Stress<Sphere,Cauchy>&> cauchyStress){
-//        calculateStress(body, kim, std::tie(std::get<0>(cauchyStress)));
-//    });
-//
-//    // calculates one Piola stress
-//    m.def("calculateStress",[](BoxConfiguration& body, Kim& kim, std::tuple<Stress<Sphere,Piola>&> piolaStress){
-//        calculateStress(body, kim, std::tie(std::get<0>(piolaStress)));
-//    });
-//
-//    // calculates a couple of Cauchy stresses
-//    m.def("calculateStress",[](BoxConfiguration& body, Kim& kim, std::tuple<Stress<Sphere,Cauchy>&, Stress<Sphere,Cauchy>&> stress){
-//        calculateStress(body, kim, std::tie(std::get<0>(stress),std::get<1>(stress)));
-//    });
-//
-//    // calculates a couple of Piola stresses
-//    m.def("calculateStress",[](BoxConfiguration& body, Kim& kim, std::tuple<Stress<Sphere,Piola>&, Stress<Sphere,Piola>&> stress){
-//        calculateStress(body, kim, std::tie(std::get<0>(stress),std::get<1>(stress)));
-//    });
-//
-//    // calculates a couple of Piola stresses, and a couple of Cauchy stresses
-//    m.def("calculateStress",[](BoxConfiguration& body, Kim& kim,
-//                               std::tuple<Stress<Sphere,Piola>&,  Stress<Sphere,Piola>&>  piolaStress,
-//                               std::tuple<Stress<Sphere,Cauchy>&, Stress<Sphere,Cauchy>&> cauchyStress){
-//        calculateStress(body, kim, std::tie(std::get<0>(piolaStress),std::get<1>(piolaStress)),
-//                                   std::tie(std::get<0>(cauchyStress),std::get<1>(cauchyStress)));
-//    });
+    m.def("calculateStress",[](BoxConfiguration& body, Kim& kim, std::tuple<Stress<MethodSphere,Cauchy>&> cauchyStress){
+        std::cout << "here\n";
+       calculateStress(body, kim, std::tie(std::get<0>(cauchyStress)));
+   });
+   m.def("calculateStress",[](BoxConfiguration& body, Kim& kim, Stress<MethodSphere,Cauchy> cauchyStress){
+        std::cout << "here\n";
+       calculateStress(body, kim, std::tie(cauchyStress));
+   });
+
+   // calculates one Piola stress
+   m.def("calculateStress",[](BoxConfiguration& body, Kim& kim, std::tuple<Stress<MethodSphere,Piola>&> piolaStress){
+       calculateStress(body, kim, std::tie(std::get<0>(piolaStress)));
+   });
+   m.def("calculateStress",[](BoxConfiguration& body, Kim& kim, Stress<MethodSphere,Piola> piolaStress){
+       calculateStress(body, kim, std::tie(piolaStress));
+   });
+
+   // calculates a couple of Cauchy stresses
+   m.def("calculateStress",[](BoxConfiguration& body, Kim& kim, std::tuple<Stress<MethodSphere,Cauchy>&, Stress<MethodSphere,Cauchy>&> stress){
+       calculateStress(body, kim, std::tie(std::get<0>(stress),std::get<1>(stress)));
+   });
+
+   // calculates a couple of Piola stresses
+   m.def("calculateStress",[](BoxConfiguration& body, Kim& kim, std::tuple<Stress<MethodSphere,Piola>&, Stress<MethodSphere,Piola>&> stress){
+       calculateStress(body, kim, std::tie(std::get<0>(stress),std::get<1>(stress)));
+   });
+
+   // calculates a couple of Piola stresses, and a couple of Cauchy stresses
+   m.def("calculateStress",[](BoxConfiguration& body, Kim& kim,
+                              std::tuple<Stress<MethodSphere,Piola>&,  Stress<MethodSphere,Piola>&>  piolaStress,
+                              std::tuple<Stress<MethodSphere,Cauchy>&, Stress<MethodSphere,Cauchy>&> cauchyStress){
+       calculateStress(body, kim, std::tie(std::get<0>(piolaStress),std::get<1>(piolaStress)),
+                                  std::tie(std::get<0>(cauchyStress),std::get<1>(cauchyStress)));
+   });
 }
