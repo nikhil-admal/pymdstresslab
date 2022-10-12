@@ -1,6 +1,13 @@
-from turtle import up
 import pymdstresslab as pmsl
 import numpy as np
+
+class MU(pmsl.MethodUser):
+    def bondFunction(x, y):
+        return np.sum(x,y)
+
+    def __call__(x):
+        return x
+
 
 # -------------------------------------------------------------------
 # Input configuration and potential
@@ -24,18 +31,34 @@ n_grid = 5
 lower_vec = np.array([0., 0., 0.])
 upper_vec = np.array([60., 60., 60.])
 
-randomGrid = pmsl.Grid("Current",lower_limit=lower_vec, upper_limit=upper_vec,x=n_grid, y=n_grid, z=n_grid)
-referenceRandomGrid = pmsl.Grid("Reference",lower_limit=lower_vec, upper_limit=upper_vec,x=n_grid, y=n_grid, z=n_grid)
+randomGrid = pmsl.Grid("Current",
+                        lower_limit=lower_vec, 
+                        upper_limit=upper_vec,
+                        x=n_grid, 
+                        y=n_grid, 
+                        z=n_grid)
+
+referenceRandomGrid = pmsl.Grid("Reference",
+                                lower_limit=lower_vec, 
+                                upper_limit=upper_vec,
+                                x=n_grid, 
+                                y=n_grid, 
+                                z=n_grid)
 
 n_grid = 3
-referenceGrid = pmsl.Grid("Reference",lower_limit=lower_vec, upper_limit=upper_vec,x=n_grid, y=n_grid, z=n_grid)
+referenceGrid = pmsl.Grid("Reference",
+                           lower_limit=lower_vec, 
+                           upper_limit=upper_vec,
+                           x=n_grid, 
+                           y=n_grid, 
+                           z=n_grid)
 gridFromFile = pmsl.Grid("Current", from_file="grid_cauchy.data")
 
 # -------------------------------------------------------------------
 # Calculate stress on the grid
 # -------------------------------------------------------------------
 
-hardy1 = pmsl.MethodSphere(5.29216036151419,"hardy")
+hardy1 = pmsl.MethodSphere(5.29216036151419, "hardy")
 hardyStress1 = pmsl.Stress(hardy1, gridFromFile, name="hardy1")
 
 hardy2 = pmsl.MethodSphere(20.0,"hardy")

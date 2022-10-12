@@ -1,0 +1,48 @@
+2022-10-12:15:13:08CDT * 0 * information * 0x55e964552770 * KIM_LogImplementation.cpp:107 * Log object created.  Default verbosity level is 'information'.
+2022-10-12:15:13:08CDT * 0 * information * 0x55e9646edcc0 * KIM_LogImplementation.cpp:107 * Log object created.  Default verbosity level is 'information'.
+2022-10-12:15:13:08CDT * 1 * information * 0x55e9646edcc0 * KIM_LogImplementation.cpp:242 * Log object renamed.  ID changed to '0x55e964552770_Collections'.
+2022-10-12:15:13:08CDT * 2 * information * 0x55e964552770_Collections * KIM_LogImplementation.cpp:246 * Log object renamed.  ID changed from '0x55e9646edcc0'.
+2022-10-12:15:13:08CDT * 1 * warning * 0x55e964552770 * KIM_ModelImplementation.cpp:870 * Use of the GetParameterFileName(0, 0x7ffe214b90c0). function is deprecated. Please use GetParameterFileBasename() instead.
+2022-10-12:15:13:08CDT * 3 * information * 0x55e964552770_Collections * KIM_LogImplementation.cpp:119 * Log object destroyed.
+2022-10-12:15:13:08CDT * 0 * information * 0x55e9646edcc0 * KIM_LogImplementation.cpp:107 * Log object created.  Default verbosity level is 'information'.
+2022-10-12:15:13:08CDT * 1 * information * 0x55e9646edcc0 * KIM_LogImplementation.cpp:242 * Log object renamed.  ID changed to '0x55e964552770_0x55e9646edcc0'.
+2022-10-12:15:13:08CDT * 2 * information * 0x55e964552770_0x55e9646edcc0 * KIM_LogImplementation.cpp:246 * Log object renamed.  ID changed from '0x55e9646edcc0'.
+2022-10-12:15:13:08CDT * 3 * information * 0x55e964552770_0x55e9646edcc0 * StillingerWeberImplementation.cpp:727 * Register argument supportStatus
+2022-10-12:15:13:08CDT * 4 * information * 0x55e964552770_0x55e9646edcc0 * StillingerWeberImplementation.cpp:746 * Register callback supportStatus
+2022-10-12:15:13:08CDT * 2 * information * 0x55e964552770 * KIM_LogImplementation.cpp:119 * Log object destroyed.
+2022-10-12:15:15:37CDT * 0 * information * 0x564cbbefa770 * KIM_LogImplementation.cpp:107 * Log object created.  Default verbosity level is 'information'.
+2022-10-12:15:15:37CDT * 0 * information * 0x564cbc095cc0 * KIM_LogImplementation.cpp:107 * Log object created.  Default verbosity level is 'information'.
+2022-10-12:15:15:37CDT * 1 * information * 0x564cbc095cc0 * KIM_LogImplementation.cpp:242 * Log object renamed.  ID changed to '0x564cbbefa770_Collections'.
+2022-10-12:15:15:37CDT * 2 * information * 0x564cbbefa770_Collections * KIM_LogImplementation.cpp:246 * Log object renamed.  ID changed from '0x564cbc095cc0'.
+2022-10-12:15:15:37CDT * 1 * warning * 0x564cbbefa770 * KIM_ModelImplementation.cpp:870 * Use of the GetParameterFileName(0, 0x7ffe49549fc0). function is deprecated. Please use GetParameterFileBasename() instead.
+2022-10-12:15:15:37CDT * 3 * information * 0x564cbbefa770_Collections * KIM_LogImplementation.cpp:119 * Log object destroyed.
+2022-10-12:15:15:37CDT * 0 * information * 0x564cbc095cc0 * KIM_LogImplementation.cpp:107 * Log object created.  Default verbosity level is 'information'.
+2022-10-12:15:15:37CDT * 1 * information * 0x564cbc095cc0 * KIM_LogImplementation.cpp:242 * Log object renamed.  ID changed to '0x564cbbefa770_0x564cbc095cc0'.
+2022-10-12:15:15:37CDT * 2 * information * 0x564cbbefa770_0x564cbc095cc0 * KIM_LogImplementation.cpp:246 * Log object renamed.  ID changed from '0x564cbc095cc0'.
+2022-10-12:15:15:37CDT * 3 * information * 0x564cbbefa770_0x564cbc095cc0 * StillingerWeberImplementation.cpp:727 * Register argument supportStatus
+2022-10-12:15:15:37CDT * 4 * information * 0x564cbbefa770_0x564cbc095cc0 * StillingerWeberImplementation.cpp:746 * Register callback supportStatus
+2022-10-12:15:15:37CDT * 2 * information * 0x564cbbefa770 * KIM_LogImplementation.cpp:119 * Log object destroyed.
+2022-10-12:15:16:08CDT * 0 * information * 0x5571879d7770 * KIM_LogImplementation.cpp:107 * Log object created.  Default verbosity level is 'information'.
+2022-10-12:15:16:08CDT * 0 * information * 0x557187b72cc0 * KIM_LogImplementation.cpp:107 * Log object created.  Default verbosity level is 'information'.
+2022-10-12:15:16:08CDT * 1 * information * 0x557187b72cc0 * KIM_LogImplementation.cpp:242 * Log object renamed.  ID changed to '0x5571879d7770_Collections'.
+2022-10-12:15:16:08CDT * 2 * information * 0x5571879d7770_Collections * KIM_LogImplementation.cpp:246 * Log object renamed.  ID changed from '0x557187b72cc0'.
+2022-10-12:15:16:08CDT * 1 * warning * 0x5571879d7770 * KIM_ModelImplementation.cpp:870 * Use of the GetParameterFileName(0, 0x7ffe331256b0). function is deprecated. Please use GetParameterFileBasename() instead.
+2022-10-12:15:16:08CDT * 3 * information * 0x5571879d7770_Collections * KIM_LogImplementation.cpp:119 * Log object destroyed.
+2022-10-12:15:16:08CDT * 0 * information * 0x557187b72cc0 * KIM_LogImplementation.cpp:107 * Log object created.  Default verbosity level is 'information'.
+2022-10-12:15:16:08CDT * 1 * information * 0x557187b72cc0 * KIM_LogImplementation.cpp:242 * Log object renamed.  ID changed to '0x5571879d7770_0x557187b72cc0'.
+2022-10-12:15:16:08CDT * 2 * information * 0x5571879d7770_0x557187b72cc0 * KIM_LogImplementation.cpp:246 * Log object renamed.  ID changed from '0x557187b72cc0'.
+2022-10-12:15:16:08CDT * 3 * information * 0x5571879d7770_0x557187b72cc0 * StillingerWeberImplementation.cpp:727 * Register argument supportStatus
+2022-10-12:15:16:08CDT * 4 * information * 0x5571879d7770_0x557187b72cc0 * StillingerWeberImplementation.cpp:746 * Register callback supportStatus
+2022-10-12:15:16:11CDT * 0 * information * 0x5571879d7770 * KIM_LogImplementation.cpp:119 * Log object destroyed.
+2022-10-12:15:23:19CDT * 0 * information * 0x55e9451f4770 * KIM_LogImplementation.cpp:107 * Log object created.  Default verbosity level is 'information'.
+2022-10-12:15:23:19CDT * 0 * information * 0x55e94538fcc0 * KIM_LogImplementation.cpp:107 * Log object created.  Default verbosity level is 'information'.
+2022-10-12:15:23:19CDT * 1 * information * 0x55e94538fcc0 * KIM_LogImplementation.cpp:242 * Log object renamed.  ID changed to '0x55e9451f4770_Collections'.
+2022-10-12:15:23:19CDT * 2 * information * 0x55e9451f4770_Collections * KIM_LogImplementation.cpp:246 * Log object renamed.  ID changed from '0x55e94538fcc0'.
+2022-10-12:15:23:19CDT * 1 * warning * 0x55e9451f4770 * KIM_ModelImplementation.cpp:870 * Use of the GetParameterFileName(0, 0x7fff38f83400). function is deprecated. Please use GetParameterFileBasename() instead.
+2022-10-12:15:23:19CDT * 3 * information * 0x55e9451f4770_Collections * KIM_LogImplementation.cpp:119 * Log object destroyed.
+2022-10-12:15:23:19CDT * 0 * information * 0x55e94538fcc0 * KIM_LogImplementation.cpp:107 * Log object created.  Default verbosity level is 'information'.
+2022-10-12:15:23:19CDT * 1 * information * 0x55e94538fcc0 * KIM_LogImplementation.cpp:242 * Log object renamed.  ID changed to '0x55e9451f4770_0x55e94538fcc0'.
+2022-10-12:15:23:19CDT * 2 * information * 0x55e9451f4770_0x55e94538fcc0 * KIM_LogImplementation.cpp:246 * Log object renamed.  ID changed from '0x55e94538fcc0'.
+2022-10-12:15:23:19CDT * 3 * information * 0x55e9451f4770_0x55e94538fcc0 * StillingerWeberImplementation.cpp:727 * Register argument supportStatus
+2022-10-12:15:23:19CDT * 4 * information * 0x55e9451f4770_0x55e94538fcc0 * StillingerWeberImplementation.cpp:746 * Register callback supportStatus
+2022-10-12:15:23:22CDT * 0 * information * 0x55e9451f4770 * KIM_LogImplementation.cpp:119 * Log object destroyed.

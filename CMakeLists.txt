@@ -16,6 +16,7 @@ SET(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
 #add_subdirectory(tests)
 #add_subdirectory(unit_tests)
 #SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(PythonInterp REQUIRED)
 # Without explicitly finding PythonLibs, Build fails in env with no explicit LD_LIBRARY_PATH
@@ -31,4 +32,5 @@ add_subdirectory(mdstresslab/src "./mdstresslab")
 
 pybind11_add_module(pymdstresslab src/python_bindings.cpp)
 target_link_libraries(pymdstresslab PUBLIC MDStressLab++)
+
 #set_target_properties(pymdstresslab PROPERTIES BUILD_WITH_INSTALL_RPATH FALSE LINK_FLAGS "-Wl,-rpath,$ORIGIN/")
