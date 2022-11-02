@@ -46,16 +46,21 @@ class CMakeExtension(Extension):
 class cmake_build_ext(build_ext_orig):
     "adapted from https://gist.github.com/hovren/5b62175731433c741d07ee6f482e2936"
     def run(self):
+        print("entered in run")
         build_directory = os.path.abspath(self.build_temp)
-        # cmake_args = [ '-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=' + build_directory]
-        cmake_args = [build_directory]
+        lib_directory = os.path.abspath(self.build_lib)
+        print(f"-> {build_directory} {lib_directory}\n")
+        cmake_args = [ '-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=' + lib_directory]
+        # cmake_args = [build_directory]
         cfg = 'Release'
         build_args = ['--config', cfg]
         cmake_args += ['-DCMAKE_BUILD_TYPE=' + cfg]
         self.build_args = build_args
+        
         # CMakeLists.txt is in the same directory as this setup.py file
         cmake_list_dir = os.path.abspath(os.path.dirname(__file__))
-
+        
+        print("here")
         # Check python env flags for CMAKE
         # PYTHON_LIB  PYTHON_EXEC
         python_lib = os.environ.get("PYTHON_LIB", None)
@@ -64,19 +69,28 @@ class cmake_build_ext(build_ext_orig):
             cmake_args += ['-DPYTHON_LIBRARY=' + python_lib]
         if python_exec:
             cmake_args += ['-DPYTHON_EXECUTABLE=' + python_exec]
-
-        subprocess.check_call(['cmake', cmake_list_dir] + cmake_args, cwd=self.build_temp)#, env=env)
+        print(f"build_temp::::{self.build_temp}  ::::{build_directory}")
+        subprocess.check_call(['cmake', cmake_list_dir] + cmake_args, cwd=lib_directory)#, env=env)
+        print("second subprocess call")
         cmake_cmd = ['cmake', '--build', '.'] + self.build_args
-        subprocess.check_call(cmake_cmd, cwd=self.build_temp)
+        subprocess.check_call(cmake_cmd, cwd=self.build_lib)
 
         # Move from build temp to final position  
         for ext in self.extensions:
             # if "my_pyth_lib" in ext.name:
-            print(os.listdir(self.build_temp))
-            in_file_name_mdstress = glob(self.build_temp + "/mdstresslab/libMDStressLab++.*")[0]
+            # print(os.listdir(self.build_lib+"/pymdstresslab"))
+            in_file_name_mdstress = glob(self.build_lib + "/libMDStressLab++.*")[0]
             out_file_name_mdstress = "/".join(self.get_ext_fullpath(ext.name).split("/")[:-1]) + "/mdstresslab/" + in_file_name_mdstress.split("/")[-1]
-            print(in_file_name_mdstress, out_file_name_mdstress)
-            shutil.copy(self.build_temp + "/" + self.get_ext_filename(ext.name).split("/")[-1], self.get_ext_fullpath(ext.name))
+            #print(in_file_name_mdstress, out_file_name_mdstress)
+            #print(self.build_lib + "/" + self.get_ext_filename(ext.name).split("/")[-1])
+            #print("/".join(self.get_ext_fullpath(ext.name).split("/")[2:-1]))
+            os.makedirs(self.build_lib + "/" + "/".join(self.get_ext_fullpath(ext.name).split("/")[2:-1]), exist_ok=True)
+            os.makedirs(self.build_lib + "/" + "/".join(self.get_ext_fullpath(ext.name).split("/")[2:-1]) + "/mdstresslab", exist_ok=True)
+            print(os.listdir(self.build_lib+"/pymdstresslab"))
+            print(os.listdir(self.build_lib))
+            print("->",  self.build_lib , "/".join(self.get_ext_fullpath(ext.name).split("/")[2:-1]))
+            shutil.copy(self.build_lib + "/" + self.get_ext_filename(ext.name).split("/")[-1], self.get_ext_fullpath(ext.name))
+            print("copied ext file")
             shutil.copy(in_file_name_mdstress,out_file_name_mdstress)
             # else:
             #     shutil.copy(self.build_temp + "/" + self.get_ext_filename(ext.name).split("/")[-1], self.get_ext_fullpath(ext.name))
