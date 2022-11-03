@@ -1,4 +1,3 @@
-from turtle import up
 import pymdstresslab as pmsl
 import numpy as np
 
@@ -6,7 +5,7 @@ import numpy as np
 # Input configuration and potential
 # -------------------------------------------------------------------
 
-modelname= "SW_StillingerWeber_1985_Si__MO_405512056662_005"
+modelname= "SW_StillingerWeber_1985_Si__MO_405512056662_006"
 configFileName= "config.data"
 referenceAndFinal= True
 
