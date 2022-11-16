@@ -27,13 +27,12 @@ class Custom(pmsl.MethodUser):
     def bondFunction(self, vec1:np.ndarray, vec2:np.ndarray):
         r1 = np.linalg.norm(vec1); r2 = np.linalg.norm(vec2)
         a = 4 * np.linalg.norm(vec1 - vec2) ** 2
-        b = 4 * (vec1.dot(vec2) - vec2.dot(vec1))**2 - a * r1 * r2
-        sPerp =  (vec1.dot(vec2) - vec2.dot(vec1))/np.linalg.norm(vec1 - vec2)**2
+        b = 4 * (vec1.dot(vec2) - vec1.dot(vec1))**2 - a * r1 * r1
+        sPerp =  (vec1.dot(vec1) - vec2.dot(vec1))/np.linalg.norm(vec1 - vec2)**2
 
         vecPerp = (1 - sPerp) * vec1 + sPerp * vec2
         rPerp = np.linalg.norm(vecPerp)
-        #print(r1, r2, rPerp)
-        ## assert(rPerp < (min(r1, r2) + 1e-8))
+        assert(rPerp < (min(r1, r2) + 1e-8))
         
         if (rPerp > self.averagingDomainSize):
             return 0
@@ -54,17 +53,19 @@ class Custom(pmsl.MethodUser):
             rmin = rPerp
             if (np.abs(r1 - rmin) > 1e-8):
                 result = self.integrate(a, b, rmin, r1)
+                print(result)
             if (np.abs(r2 - rmin) > 1e-8):
                 result += self.integrate(a, b, rmin, r2)
+                print(result)
             return result
 
     def integratePolynomial(self, degree:int, a:float, b:float, r1:float, r2:float):
-        # assert(r1 <= r2)
+        assert(r1 <= r2)
         if (degree == 0):
-            # assert(a * r2 ** 2 + b + 1e-8 > 0 and a * r1 ** 2 + b + 1e-8)
+            assert(a * r2 ** 2 + b + 1e-8 > 0 and a * r1 ** 2 + b + 1e-8)
             return np.sqrt(a * r2 ** 2 + b + 1e-8) - np.sqrt(a * r1 ** 2 + b + 1e-8) 
         if (degree == 1):
-            # assert(a * r2 ** 2 + b + 1e-8 > 0 and a * r1 ** 2 + b + 1e-8 and a > 0)
+            assert(a * r2 ** 2 + b + 1e-8 > 0 and a * r1 ** 2 + b + 1e-8 and a > 0)
             tmp1 =np.sqrt(a) * np.sqrt( a * r1 ** 2 + b + 1e-8 )
             tmp2 =np.sqrt(a) * np.sqrt( a * r2 ** 2 + b + 1e-8 )
             return ((r2 * tmp2 - b * np.log(tmp2 + a * r2)) - 
@@ -73,17 +74,17 @@ class Custom(pmsl.MethodUser):
         return -1
 
     def integrate(self, a:float, b:float, rmin:float, rmax:float):
-        # assert(rmin <= rmax and rmax <= self.averagingDomainSize)
+        assert(rmin <= rmax and rmax <= self.averagingDomainSize)
         result = 0.0
         min_index = 0
         for i, interval in enumerate(self.intervals):
             if rmin >= interval[0] and rmin < interval[1]:
-                index = i
+                min_index = i
                 break
         max_index = 0
         for i, interval in enumerate(self.intervals):
             if rmax >= interval[0] and rmax < interval[1]:
-                index = i
+                max_index = i
                 break
         for i in range(min_index, max_index):
             if i == min_index :
